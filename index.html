@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>肖鑫磊 - 机器人与AI算法工程师简历</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0e17;
+            --card-bg: #111827;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-color: #00f6ff;
+            --accent-hover: #00c3cc;
+            --border-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 顶部引导动画 */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #0a0e17 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(0, 246, 255, 0.3);
+            margin-bottom: 1rem;
+            object-fit: cover;
+            /* 如果有线上头像链接可以替换这里的src，暂时用占位符 */
+            background-color: #1e293b; 
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .titles {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .titles span {
+            background: rgba(0, 246, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 246, 255, 0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        /* 技能标签 */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 246, 255, 0.15);
+        }
+
+        /* 卡片网格布局（项目和比赛） */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--accent-color);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+            transform-origin: bottom;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4), 0 0 15px rgba(0, 246, 255, 0.1);
+            border-color: rgba(0, 246, 255, 0.3);
+        }
+
+        .card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .card h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .meta {
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card ul {
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .card ul li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* 滚动动画类 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 浮动操作按钮 */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-color);
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 246, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            background-color: var(--accent-hover);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Jetson" alt="肖鑫磊" class="avatar">
+        <h1>肖鑫磊 (Jetson)</h1>
+        <div class="titles">
+            <span>机器人研发工程师</span>
+            <span>SLAM算法工程师</span>
+            <span>机器人仿真工程师</span>
+            <span>AI大模型应用开发者</span>
+        </div>
+        <div class="contact-info">
+            <span><i class="fas fa-graduation-cap"></i> 湖南工商大学 · 人工智能</span>
+            <a href="tel:19230037520"><i class="fas fa-phone"></i> 19230037520</a>
+            <a href="mailto:3286167577@qq.com"><i class="fas fa-envelope"></i> 3286167577@qq.com</a>
+            <span><i class="fas fa-calendar-alt"></i> 备战27届机器人方向考研</span>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section class="reveal">
+            <h2 class="section-title"><i class="fas fa-user-astronaut"></i> 个人综述</h2>
+            <p style="color: var(--text-muted); text-align: justify;">
+                对具身智能、系统开发与硬核AI算法怀有极度热忱。具备从“底层硬件感知”到“上层AI决策”，再到“机器人动作控制”的<b>全栈开发视野</b>。习惯在 Linux (Ubuntu/Win11 双系统) 下攻克技术难关，不仅能在仿真环境 (Gazebo/Isaac Gym) 中完成强化学习策略调优，更具备强悍的<b>真机部署与调试能力</b>（如宇树G1人形机器人、微型无人机）。同时，活跃于开源社区，在图像伪造检测、大模型智能体(Agent)以及嵌入式极客开发等领域均有深厚积累。
+            </p>
+        </section>
+
+        <section class="reveal">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> 核心技术栈</h2>
+            <div class="skills-container">
+                <div class="skill-tag"><i class="fab fa-python"></i> Python / C / C++ / Java</div>
+                <div class="skill-tag"><i class="fas fa-robot"></i> ROS1 / ROS2 通信机制</div>
+                <div class="skill-tag"><i class="fas fa-cogs"></i> 具身智能 (WBC全身控制 / 遥操作框架)</div>
+                <div class="skill-tag"><i class="fas fa-map-marked-alt"></i> SLAM (Fast-LIO / FAST-LIVO2)</div>
+                <div class="skill-tag"><i class="fas fa-brain"></i> 深度学习 / 强化学习 / 模仿学习</div>
+                <div class="skill-tag"><i class="fas fa-eye"></i> 计算机视觉 (OpenCV / DinoV2 / ArcFace)</div>
+                <div class="skill-tag"><i class="fas fa-terminal"></i> Linux内核编译 / Shell脚本 / 硬件驱动调优</div>
+                <div class="skill-tag"><i class="fas fa-project-diagram"></i> AI大模型框架 (OpenClaw / Claude Code等)</div>
+                <div class="skill-tag"><i class="fas fa-watch"></i> 嵌入式与极客开发 (Monkey C 表盘系统开发)</div>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> 硬核工程经历</h2>
+            <div class="grid-layout">
+                
+                <div class="card">
+                    <h3>基于模仿与强化学习的人形机器人舞蹈与动作控制系统</h3>
+                    <div class="meta"><span>项目负责人 | 算法与真机部署</span> <span>2025.08 - 2025.09</span></div>
+                    <ul>
+                        <li><b>技术突破：</b>打通了从仿真训练到物理真机的Sim-to-Real全链路。</li>
+                        <li><b>模仿学习(IL)：</b>初期基于 RoboMimic 框架，利用专家数据实现动作克隆，快速验证了真机部署的可行性。</li>
+                        <li><b>强化学习(RL)：</b>为追求高鲁棒性，深入复现并改造 ASAP 框架，在物理引擎中进行大规模策略寻优，解决纯模仿方法在宇树G1真机上的动力学适配问题。</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>宇树 G1 机器人室内自主探索、导航与 SLAM 系统</h3>
+                    <div class="meta"><span>项目负责人 | SLAM工程师</span> <span>2025.06 - 2025.08</span></div>
+                    <ul>
+                        <li><b>传感器融合：</b>针对未知室内环境，系统性对比并部署 Fast-LIO 与 FAST-LIVO2。</li>
+                        <li><b>算法调优：</b>通过深度分析点云漂移与累计误差，优化了多传感器融合机制，大幅提升弱特征场景下的建图鲁棒性。</li>
+                        <li><b>前沿探索：</b>独立研究并本地化部署了CMU的自主探索算法(Autonomous Exploration)，使机器人具备从“被动建图”向“主动感知环境”跨越的能力。</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>宇树 G1 官方格斗赛与全方向遥操作(Teleoperation)开发</h3>
+                    <div class="meta"><span>核心开发者 | 机器人控制</span> <span>近期项目</span></div>
+                    <ul>
+                        <li><b>遥操作架构：</b>深入研究并实践 TWIST/TWIST2 等前沿遥操作框架，实现对人形机器人关节的高频、低延迟动捕与映射控制。</li>
+                        <li><b>全身控制(WBC)：</b>在格斗竞技的高动态要求下，调试全身动力学控制算法，优化机器人的质心稳定与抗冲击能力。</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>极客生态开发：Garmin 智能手表表盘与系统级应用</h3>
+                    <div class="meta"><span>独立开发者 (Jetson)</span> <span>2026.04</span></div>
+                    <ul>
+                        <li>基于 Monkey C 和 Java 语言，在 Connect IQ 生态中独立设计并开发了 Fenix7 等高端机型的定制化表盘。</li>
+                        <li>攻克了可穿戴设备极低功耗限制下的复杂图形渲染与数据同步逻辑，展现了扎实的底层软件架构能力。</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> 竞赛与科研突破</h2>
+            <div class="grid-layout">
+                
+                <div class="card">
+                    <h3>Kaggle 科学图像伪造检测挑战赛 (RECODAI LUC)</h3>
+                    <div class="meta"><span>核心算法研发</span> <span>Public LB: 0.317</span></div>
+                    <p><b>工作内容：</b>针对复杂的学术图像篡改问题，设计了基于 DinoV2 的混合集成模型。负责模型架构搭建、损失函数优化以及大规模数据增强，在极具挑战的国际赛道中斩获高分。</p>
+                </div>
+
+                <div class="card">
+                    <h3>微型无人机全自主挑战赛 (国家级二等奖)</h3>
+                    <div class="meta"><span>技术负责人 | 软件全栈</span> <span>第二十七届中国机器人大赛</span></div>
+                    <p><b>工作内容：</b>基于 ROS1 深度集成开源飞控、SLAM定位与任务模块。在Gazebo中完成验证后，主导大量线下真机测试，负责传感器标定、PID整定，实现起飞、避障穿越到精准降落的全自主闭环。</p>
+                </div>
+
+                <div class="card">
+                    <h3>AI 化学反应过渡态结构预测 (省级二等奖/国家优秀奖)</h3>
+                    <div class="meta"><span>技术负责人</span> <span>第七届全球校园AI精英大赛</span></div>
+                    <p><b>工作内容：</b>研读 Nature 顶会成果，基于《ReactOT》开源项目构建预测基线。对模型结构进行微调和适应性改造，大幅提升了在特定化学数据集上的预测精度与泛化能力。</p>
+                </div>
+                
+                <div class="card">
+                    <h3>高通量人群戴口罩的人脸识别方法 (省级大创)</h3>
+                    <div class="meta"><span>项目负责人</span> <span>省级大学生创新计划</span></div>
+                    <p><b>工作内容：</b>独立开发基于 Tkinter 和 MySQL 的完整系统原型，支持视频流的实时处理。正在引入 RetinaFace/ArcFace 等前沿视觉模型，突破遮挡场景下的特征提取瓶颈。</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <a href="#" class="fab" title="返回顶部">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // 滚动浮现动画逻辑
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // 元素距离视口底部多少距离时触发
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        // 监听滚动事件
+        window.addEventListener("scroll", reveal);
+        // 初始触发一次
+        reveal();
+    </script>
+</body>
+</html>
